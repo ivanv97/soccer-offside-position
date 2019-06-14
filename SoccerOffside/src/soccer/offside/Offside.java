@@ -45,10 +45,10 @@ public final class Offside {
 		int secondToLastLeftTeamPlayer = teams[0][1];
 
 		// Whether any of the teams is performing corner
-		if (potentialRightTeamPlayer == leftGoalKeeper) {
+		if (potentialRightTeamPlayer == leftGoalKeeper && potentialRightTeamPlayer == 0) {
 			System.out.println("Right team is performing corner in left half of the field!");
 			return false;
-		} else if (potentialLeftTeamPlayer == rightGoalKeeper) {
+		} else if (potentialLeftTeamPlayer == rightGoalKeeper && potentialLeftTeamPlayer == 100) {
 			System.out.println("Left team is performing corner in right half of the field!");
 			return false;
 		}
@@ -125,9 +125,11 @@ public final class Offside {
 
 					if (playersInbetween == 1) {
 						// Checking if the last defending player is actually
-						// equal to the attacking player - the it is corner
+						// equal to the attacking player and to the goal line -
+						// then a corner is being performed
 						for (int i = 0; i < teams[team].length; i++) {
-							if (teams[team][playerInAttack] == teams[team == 0 ? 1 : 0][i]) {
+							if ((teams[team][playerInAttack] == teams[team == 0 ? 1 : 0][i])
+									&& teams[team][playerInAttack] == (team == 0 ? 100 : 0)) {
 								String message = (team == 0 ? "Left" : "Right") + " team is performing corner in "
 										+ (team == 0 ? "right" : "left") + " half of the field!";
 								System.out.println(message);
